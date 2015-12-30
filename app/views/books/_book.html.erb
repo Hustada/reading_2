@@ -1,4 +1,4 @@
-<table class="table table-hover">
+<table class="table table-hover" id="book_table">
     <thead>
       <tr>
         <th>Title</th>
@@ -8,7 +8,7 @@
         <th>Remove book from list</th>
       </tr>
     </thead>
-  <tbody>
+  <tbody id="remove_book">
     <% @books.each do |book| %>
       <tr>
         <td><%=book.name %></td>
@@ -19,7 +19,7 @@
         <% else %>
         <td class="finish-book"><%=link_to 'Mark as Finished', finish_list_book_path(@list, book), :method => :put, remote: true %></td>
         <% end %>
-        <td class><%= link_to '|Remove Book|', list_book_path(@list, book), method: :delete, data: { confirm: 'Are you sure?'} %></td>
+        <td><%= link_to '|Remove Book|', list_book_path(@list, book), method: :delete, data: { confirm: 'Are you sure?'}, remote: true %></td>
 <% end %>
       </tr>
   </tbody>
